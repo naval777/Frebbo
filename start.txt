@@ -1,0 +1,6 @@
+Go into the folder in terminal run :
+python -m SimpleHTTPServer
+(it might be already there, or just install it)
+u can see the app at http://localhost:8000/
+
+If node is installed u can use node too.
