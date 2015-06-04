@@ -1,0 +1,130 @@
+<style type="text/css">
+ul{list-style-type: none;}
+	ul#boxes{
+		position:relative;
+		display:inline-block;
+		width:20vw;margin-left:10vw;
+		float:left;
+	}
+	#inpt_curricname{width:30vw;}
+	label{font-size:17px;}	
+	.table{padding-top: 7vh; }
+	.table tr{border-bottom: 1px solid #aaa;}
+	.table th,td{padding-right:2vw;padding-top: 2vh;text-align:left;}
+	.table input{width:70%;}
+</style>
+
+<div layout='row' style="height:100%;width:100vw;" flex>
+<ng-include  layout='row' flex style="height:100%;position:fixed;" src="'/views/institute/sidenav.html'"></ng-include>
+
+<div layout='row' style="position:absolute;padding-left:256px;width:100%;">
+	<div layout-fill>
+	<md-toolbar ><h4 ng-click='go_back()'style="padding-left:10%;" flex='80'>HOME > {{tool_mesg}} </h4>
+	<span></span>
+	</md-toolbar>
+	
+
+	<md-content layout-margin flex>
+		<ul id='boxes' ng-repeat="item in curriculum" ng-hide="curric_box" >
+		 <li>
+		 <md-card class="md-whiteframe-z1" ng-click="enter_curric(item.name)" layout layout-align="center center">
+			<span >{{item.name}}</span><br />
+			<span >{{item.chapters_count}} Courses</span>
+			<span >{{item.tags_count}} Student</span>
+			</md-card>
+		 </li>
+		</ul>
+		<ul ng-hide="curric_box" >
+		 <li>
+		 <md-card class="md-whiteframe-z1" ng-click="create_curric($event)" layout layout-align="center center">
+			<span ></span><br />
+			<span >Create a new Curriculum and add Questions</span>
+			</md-card>
+		 </li>
+		</ul>
+
+		<md-content ng-hide="!curric_box" layout='column' flex >
+		  <md-content layout='column' layout-align="center center">
+			<md-input-container layout='row' flex>
+			 <label>Curriculum name</label>
+			 <input id='inpt_curricname' type="text" ng-model="curric_name" />
+			</md-input-container>
+		  </md-content>
+
+			 <md-content layout='row' layout-align="center center">
+				<div layout='column' style='width:15%;margin-left:10%' ng-repeat="item in curriculum|filter:{name:curric_name}" >
+				
+					<ul ng-repeat="course in item.courses">
+					<li style='padding-top:10px;'><md-button ng-click="set_course(course.name)">{{course.name}}</md-button></li>
+					</ul>
+				 
+				</div>
+				<div layout='column' style='width:80%;' ng-repeat="item in curriculum|filter:{name:curric_name}">
+					<md-content ng-repeat="course in item.courses|filter:{name:curric_course}">
+						<md-content ng-repeat="chapter in course.chapters" >
+							<md-card ng-click="set_chapter(chapter.name)" flex>
+								<span>{{chapter.name}}</span>
+								<md-chips ng-model='tag_model'></md-chips>
+							</md-card>
+						</md-content>
+						</md-content>
+				</div>
+			</md-content>
+
+		<md-content layout='row' layout-align="center center">
+		  
+			<table st-table="questions" class="table">
+				<thead>
+					<tr>
+					<th>
+				<!-- <input st-search placeholder='Search Questions' class="input-sm form-control" type="search"/> -->
+					</th>
+					<th><a class="md-accent md-raised" href='/#/institute/add_question' target='_blank'>+Add Question</a></th>
+					<th> <md-button  class="md-raised md-accent but2" type="file" ng-file-select="selectFile($files)" ng-multiple="true" ng-accept="'*.xls'">Upload in Bulk</md-button></th>
+				</tr>
+				<tr>
+					<th st-sort='quest'>Question</th>
+					<th>Options</th>
+					<th>Correct option</th>
+					<th>Other details</th>
+				</tr>
+				</thead>
+				<tbody>
+<!-- 				<tr ng-show='true' >
+					<td> <md-input-container flex>
+			              <label>Questions</label>
+			              <textarea ng-model="add_quest" columns="1" md-maxlength="150"></textarea>
+			            </md-input-container></td>
+					<td><p ng-repeat='opt in row.options'>{{opt}}</p></td>
+					<td><md-input-container flex><input type="text" ng-model="add_correct"  ng-required='true'/></md-input-container></td>
+					<td><md-input-container flex>
+					<label>Difficulty:</label><input type="text" ng-model="add_diff"  ng-required='true'/>
+					</md-input-container>
+					<md-input-container flex>
+					<label>Timing:</label><input type="text" ng-model="add_timing"  ng-required='true'/></md-input-container>
+					</md-input-container flex>
+					<md-input-container flex>
+					<label>Main Tag:</label><input type="text" ng-model="add_maintag"  ng-required='true'/>
+					</md-input-container></td>
+
+				</tr> -->
+				<tr ng-repeat="row in questions">
+				<td><md-checkbox ng-model="row.selected">{{row.quest}}</md-checkbox></td>
+					<td><p ng-repeat='opt in row.options'>{{opt}}</p></td>
+					<td>{{row.options[0]}}</td>
+					<td>Difficulty: {{row.difficulty}}<br />Timing: {{row.timing}}mins<br />Main Tag: {{row.main_tag}}</td>
+
+				</tr>
+				</tbody>
+		</table>
+
+			</md-content>
+			
+		</md-content>
+		</md-content>
+
+
+	</div>
+
+</div>
+</div>

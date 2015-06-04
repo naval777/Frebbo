@@ -1,0 +1,47 @@
+
+#login_but{
+	position:absolute;
+	top:30%;margin-left:20px;
+width:6%;height:40%;
+}
+
+#content_parent{
+	height:500px;
+
+}
+#caveman{
+	position: absolute;
+	top:5vh;left:0vw;
+	width:60vw;height: 60vh;
+	background: url(images/login1.png) no-repeat center transparent;
+	background-size:contain;
+}
+#subtitle{
+	position:absolute;
+	top:85%;left:20vw;
+	font-size:17px;
+	text-align: center;
+}
+input{
+background-color: white !important;height:25px;font-size: 17px; }
+
+#signup_box{
+	position: absolute;
+	top:10%;left:65%;
+	width:20%;height:65%;
+}
+#signup_box ul{
+	list-style-type: none;	
+	text-align: center;
+}
+
+#signup_box ul li:first-child{font-size:28px;font-weight:100;width:100%;}
+
+#signup_box ul li:nth-child(2){font-size:21px;margin-top:30%;padding:8px;background-color: #58b2df;color:#fff;}
+
+#signup_box ul li:nth-child(3),li:nth-child(4),li:nth-child(5){
+	font-size:18px;padding:20px;background-color: #fbf9f9;}
+
+#signup_box ul li:nth-child(3),li:nth-child(4){border-bottom: 1px solid #d7cbcb;}
+
+#signup_box ul li:nth-child(3):hover,li:nth-child(4):hover:hover,li:nth-child(5):hover{background-color: #58f2df;cursor: pointer;} 

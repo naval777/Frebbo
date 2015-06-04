@@ -1,0 +1,266 @@
+<style type="text/css">
+.md-tabs-content{}
+#right_pane{
+	position:fixed;
+	right: 0;top:8vh;
+	padding:2%;
+	width:18vw;height:100%;
+	border-left:1px solid #000;
+}
+#manageuser_section{font-size:18px;}
+.spacer{padding-left: 20px;}
+ul{list-style-type: none;}
+.but{height:40px !important;width:90px !important;}
+.but2{height:40px !important;width:150px !important;}
+
+</style>
+
+
+
+<section id='manageuser_section' layout='row' style="height:100%;" flex>
+<ng-include layout='row' style="height:100%;" src="'/views/institute/sidenav.html'"></ng-include>
+<section layout='row' flex='80'>
+	<md-tabs md-stretch-tabs class="md-primary" md-selected="data.selectedIndex">
+	   	   <md-tab id="tab1">
+		       <md-tab-label><h3>Staff</h3></md-tab-label>
+		       <md-tab-template>
+		       	<div style='width:95%;padding:5%;'>
+<form>
+	<label for="predicate">selected predicate:</label>
+	<select class="form-control" id="predicate" ng-model="selectedPredicate" ng-options="predicate for predicate in predicates"></select>
+</form>
+<table st-table="rowCollection" class="table table-striped">
+	<thead>
+		<tr>
+		<th>
+			<input st-search="firstName" placeholder="search for firstname" class="input-sm form-control" type="search"/>
+		</th>
+		<th colspan="3">
+			<input st-search placeholder="global search" class="input-sm form-control" type="search"/>
+		</th>
+		<th>
+			<input st-search="{{selectedPredicate}}" placeholder="bound predicate" class="input-sm form-control" type="search"/>
+		</th>
+	</tr>
+	<tr>
+		<th st-sort="firstName">first name</th>
+		<th st-sort="lastName">last name</th>
+		<th st-sort="birthDate">birth date</th>
+		<th st-sort="balance">balance</th>
+		<th>email</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="row in rowCollection">
+		<td>{{row.firstName | uppercase}}</td>
+		<td>{{row.lastName}}</td>
+		<td>{{row.birthDate | date}}</td>
+		<td>{{row.balance | currency}}</td>
+		<td><a ng-href="mailto:{{row.email}}">email</a></td>
+	</tr>
+	</tbody>
+</table>
+		       	<div layout="column" layout-fill style="padding-bottom: 32px;">
+ 
+  
+			            <ul ng-repeat="person in staff">
+			                <li>
+			                 <!-- <md-whiteframe class="md-whiteframe-z1" layout layout-align="center center">
+			                  <span ng-hide="editing" ng-click="editing = true">{{person.name}}<span class='spacer'></span>    {{person.id}}   {{person.role}}</span> -->
+			                <md-whiteframe class="md-whiteframe-z1" layout layout-align="center center">
+			                  <form layout='row' ng-show="true" ng-submit="editing = true">
+			                  <md-checkbox ng-model="person.staff_selected" ng-click="checkedIndex(person)" aria-label="Checkbox 1"></md-checkbox>
+			                  <md-input-container flex>
+			                    <label>Name</label>
+			                    <input type="text" ng-model="person.name" placeholder="" ng-required='true' />
+			                   </md-input-container>
+			                   <md-input-container flex>
+			                    <label>Staff ID</label>
+			                    <input type="text" ng-model="person.id" placeholder="" ng-required='true' />
+			                   </md-input-container>
+			                   <md-input-container flex>
+			                    <label>Role</label>
+			                    <input type="text" ng-model="person.role" placeholder="" ng-required='true' />
+			                   </md-input-container>
+			                    <br/>
+			                   <!-- <md-button class="btn" type="submit" flex='5'>Edit</md-button>
+			                      <md-button class="btn" ng-click="editing = true" flex='5'>Edit</md-button> -->
+			                  </form>
+			                </md-whiteframe>
+
+			                </li>                
+			            </ul>
+			     </div>
+
+			             <form layout='row' ng-show="add_visible1" ng-submit="newStaff()">
+			             <md-input-container flex>
+			            <label>Name:</label>
+			            <input type="text" ng-model="staffname" placeholder="Name" ng-required='true'/>
+			            </md-input-container>
+			            <md-input-container flex>
+			            <label>Staff ID:</label>
+			            <input type="text" ng-model="staffid" placeholder="ID" ng-required='true'/>
+			            </md-input-container>
+			             <md-input-container flex>
+			            <label>Role:</label>
+			            <input type="text" ng-model="staffrole" placeholder="Role" ng-required='true'/>
+			            </md-input-container>
+			           
+			            <md-button class="md-raised md-accent but" type="submit">Save</md-button>
+			          </form>
+		
+
+	      	</div>
+    			<!--<div>
+    			
+						<div ng-file-select ng-model="files" class="upload-button"
+							 ng-multiple="true" ng-accept="'*.pdf,*.xls'" 
+							 >Attach an File</div><br/>
+							 <button ng-click='upload()'>Upload</button>
+						<button ng-file-select ng-model="files"
+								ng-multiple="true">Attach Any File</button>
+					
+					<div ng-file-drop ng-file-select ng-model="files" ng-model-rejected="rejFiles"
+						 drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" class="drop-box"
+						 ng-multiple="true" allow-dir="true" ng-accept="'image/*,application/pdf'"
+						 drop-available="dropAvailable">
+						<div ng-hide="dropAvailable">File Drop not available</div>
+						<div ng-show="dropAvailable">Drop Images or PDFs</div>
+						<div>click to select</div> 
+					
+			 </div> -->
+		       </md-tab-template>
+		      
+	       </md-tab>
+
+
+	       <md-tab id="tab2">
+	        <md-tab-label><h3>Professors</h3></md-tab-label>
+	        <md-tab-template>
+	        <div style='width:95%;padding:5%;'>
+		       	<div layout="column" layout-fill style="padding-bottom: 32px;">
+ 
+  
+			            <ul ng-repeat="person in professors">
+			                <li>
+			                 <!-- <md-whiteframe class="md-whiteframe-z1" layout layout-align="center center">
+			                  <span ng-hide="editing" ng-click="editing = true">{{person.name}}<span class='spacer'></span>    {{person.id}}   {{person.role}}</span> -->
+			                <md-whiteframe class="md-whiteframe-z1" layout layout-align="center center">
+			                  <form layout='row' ng-show="true" ng-submit="editing = true">
+			                  <md-checkbox ng-model="person.staff_selected" ng-click="checkedIndex(person)"></md-checkbox>
+			                  <md-input-container flex>
+			                    <label>Name</label>
+			                    <input type="text" ng-model="person.name" placeholder="" ng-required='true' />
+			                   </md-input-container>
+			                   <md-input-container flex>
+			                    <label>Professor ID</label>
+			                    <input type="text" ng-model="person.id" placeholder="" ng-required='true' />
+			                   </md-input-container>
+			                   <md-input-container flex>
+			                    <label>Role</label>
+			                    <input type="text" ng-model="person.role" placeholder="" ng-required='true' />
+			                   </md-input-container>
+			                    <br/>
+			                   <!-- <md-button class="btn" type="submit" flex='5'>Edit</md-button>
+			                      <md-button class="btn" ng-click="editing = true" flex='5'>Edit</md-button> -->
+			                  </form>
+			                </md-whiteframe>
+
+			                </li>                
+			            </ul>
+			     </div>
+
+			             <form layout='row' ng-show="add_visible2" ng-submit="newProf()">
+			             <md-input-container flex>
+			            <label>Name:</label>
+			            <input type="text" ng-model="profname" placeholder="Name" ng-required='true'/>
+			            </md-input-container>
+			            <md-input-container flex>
+			            <label>Professor ID</label>
+			            <input type="text" ng-model="profid" placeholder="ID" ng-required='true'/>
+			            </md-input-container>
+			             <md-input-container flex>
+			            <label>Role:</label>
+			            <input type="text" ng-model="profrole" placeholder="Role" ng-required='true'/>
+			            </md-input-container>
+			           
+			            <md-button class="md-raised md-accent but" type="submit">Save</md-button>
+			          </form>
+		
+
+	      	</div>
+	        </md-tab-template>
+	       </md-tab>
+
+
+
+	       <md-tab id="tab3">
+	        <md-tab-label><h3>Students</h3></md-tab-label>
+	        <md-tab-template>
+	        	<div style='width:95%;padding:5%;'>
+		       	<div layout="column" layout-fill style="padding-bottom: 32px;">
+ 
+  
+			            <ul ng-repeat="person in students">
+			                <li>
+			                 <!-- <md-whiteframe class="md-whiteframe-z1" layout layout-align="center center">
+			                  <span ng-hide="editing" ng-click="editing = true">{{person.name}}<span class='spacer'></span>    {{person.id}}   {{person.role}}</span> -->
+			                <md-whiteframe class="md-whiteframe-z1" layout layout-align="center center">
+			                  <form layout='row' ng-show="true" ng-submit="editing = true">
+			                  <md-checkbox ng-model="person.staff_selected" ng-click="checkedIndex(person)"></md-checkbox>
+			                  <md-input-container flex>
+			                    <label>Name</label>
+			                    <input type="text" ng-model="person.name" placeholder="" ng-required='true' />
+			                   </md-input-container>
+			                   <md-input-container flex>
+			                    <label>Staff ID</label>
+			                    <input type="text" ng-model="person.id" placeholder="" ng-required='true' />
+			                   </md-input-container>
+			                   <md-input-container flex>
+			                    <label>Role</label>
+			                    <input type="text" ng-model="person.role" placeholder="" ng-required='true' />
+			                   </md-input-container>
+			                    <br/>
+			                   <!-- <md-button class="btn" type="submit" flex='5'>Edit</md-button>
+			                      <md-button class="btn" ng-click="editing = true" flex='5'>Edit</md-button> -->
+			                  </form>
+			                </md-whiteframe>
+
+			                </li>                
+			            </ul>
+			     </div>
+
+			             <form layout='row' ng-show="add_visible3" ng-submit="newStudent()">
+			             <md-input-container flex>
+			            <label>Name:</label>
+			            <input type="text" ng-model="studentname" placeholder="Name" ng-required='true'/>
+			            </md-input-container>
+			            <md-input-container flex>
+			            <label>Student ID:</label>
+			            <input type="text" ng-model="studentid" placeholder="ID" ng-required='true'/>
+			            </md-input-container>
+			             <md-input-container flex>
+			            <label>Role:</label>
+			            <input type="text" ng-model="studentrole" placeholder="Role" ng-required='true'/>
+			            </md-input-container>
+			           
+			            <md-button class="md-raised md-accent but" type="submit">Save</md-button>
+			          </form>
+		
+
+	      	</div>
+	        </md-tab-template>
+	       </md-tab>
+	</md-tabs>
+	<md-card layout='row' flex='20'>
+      <md-card-content>
+
+      <md-button class="md-raised md-accent but" ng-click="add()">Add</md-button><br/><br/>
+      <md-button class="md-raised md-accent but" ng-click="view()">View list</md-button><br/><br/>
+ 	<md-button class="md-raised md-accent but" ng-click="remove($index)">Delete</md-button><br/><br/>
+ 	 <md-button  class="md-raised md-accent but2" type="file" ng-file-select="selectFile($files)" ng-multiple="true" ng-accept="'*.pdf'">Upload in Bulk</md-button>
+
+      </md-card-content>
+      </md-card>
+</section>
+</section>

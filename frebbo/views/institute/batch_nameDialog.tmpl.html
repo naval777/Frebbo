@@ -1,0 +1,20 @@
+
+<md-dialog aria-label="Mango (Fruit)">
+  <form>
+  <md-dialog-content  class="sticky-container">
+    <md-subheader class="md-sticky-no-effect">Add Batch Name</md-subheader>
+    <md-input-container layout='row' flex>
+			 <label>Batch name</label>
+			 <input id='inpt_batchname' type="text" ng-model="batch_name"/>
+			</md-input-container>
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+    <md-button ng-click="Dialog_save()" class="md-primary">
+     Create
+    </md-button>
+    <md-button ng-click="Dialog_cancel()" class="md-primary">
+      Discard
+    </md-button>
+  </div>
+    </form>
+    </md-dialog>

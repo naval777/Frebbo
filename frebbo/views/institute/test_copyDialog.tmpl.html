@@ -1,0 +1,18 @@
+
+<md-dialog>
+  <form>
+  <md-dialog-content  class="sticky-container">
+    <md-subheader class="md-sticky-no-effect">Copy Test Settings</md-subheader>
+    <ul ng-repeat='test in tests'>
+    <li><md-button class='md-accent' ng-click='setCopy(test.name)'>{{test.name}}</md-button></li>
+    </ul>
+    <div class="md-actions" layout="row">
+    <md-button ng-click="Dialog_save()" class="md-primary">
+     Save
+    </md-button>
+    <md-button ng-click="Dialog_cancel()" class="md-primary">
+      Discard
+    </md-button>
+  </div>
+    </form>
+    </md-dialog>

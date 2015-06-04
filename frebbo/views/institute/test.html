@@ -1,0 +1,148 @@
+<style type="text/css">
+ul{list-style-type: none;
+		position:relative;
+		display:inline-block;
+		width:20vw;margin-left:10vw;
+		float:left;
+	}
+	input[type='text']{width:40vw;}
+	label{font-size:17px;}	
+	.table{padding-top: 7vh; }
+	.table tr{border-bottom: 1px solid #aaa;}
+	.table th,td{padding-right:2vw;padding-top: 2vh;text-align:left;}
+	.table input{width:70%;}
+</style>
+
+<div layout='row' style="height:100%;width:100vw;" flex>
+<ng-include layout='row' flex style="height:100%;position:fixed;" src="'/views/institute/sidenav.html'"></ng-include>
+
+<div layout='row' style="position:absolute;padding-left:256px;width:100%;">
+	<div layout-fill>
+	<md-toolbar ><h5 ng-click='go_back()' style="padding-left:5%;">HOME >{{tool_mesg}}</h5>
+	<md-button class='md-accent md-raised' ng-click='save_changes()' ng-hide='save_changes_hide' style="margin-right:0;margin-left:auto;color:#fff;height:70%;">SAVE CHANGES</md-button>
+	</md-toolbar>
+	
+	<md-content layout-margin flex>
+
+	<ul ng-repeat="test in tests" ng-hide="test_box" >
+		 <li>
+		 <md-card class="md-whiteframe-z1" ng-click="enter_test(test.name)" layout layout-align="center center">
+			<span >{{test.name}}</span><br />
+			<span >{{test.curriculum}} </span>
+			<span >{{test.quest_count}} Questions</span>
+			</md-card>
+		 </li>
+		</ul>
+		 </ul>
+		 <ul ng-hide="test_box" >
+		 <li>
+		 <md-card class="md-whiteframe-z1" ng-click="create_test($event)" layout layout-align="center center">
+			<span ></span><br />
+			<span >Create a new Test</span>
+			</md-card>
+		 </li>
+		</ul>
+
+		 <md-content ng-hide="!test_box" layout='column' flex layout-align="center center">
+
+		 <md-tabs md-stretch-tabs>
+	   	   <md-tab id="tab1">
+	   	    <md-tab-label><h3>Test Details</h3></md-tab-label>
+	         <md-tab-template >
+	          <md-content style='width:95%;padding:5%;'>
+	          
+	        	<md-input-container flex>
+			        <label>Title</label>
+			        <input type="text" ng-model="test_name" placeholder="" ng-required='true' />
+			    </md-input-container>
+			       <div ng-repeat='test in tests|filter:{name:test_name}'>
+					  <label>Curriculum</label>
+		   			 <md-select placeholder="{{test.curriculum}}" ng-model="test_curric">
+					  <md-option ng-value='curric.name' ng-repeat="curric in curriculum" >{{curric.name}}</md-option>
+					  </md-select>
+			       </div>
+
+			  <md-button class="md-raised" ng-click='copy_settings()'>Copy settings from existing tests</md-button>
+          
+         	 <div ng-repeat='test in tests|filter:{name:testCopy_name}'>
+			     <md-input-container flex>
+			        <label>Instructions</label>
+			        <textarea ng-model="test.instructions" columns="1" md-maxlength="150"></textarea>
+			      </md-input-container>
+			  <md-subheader class="md-primary"><h3>Test Settings</h3></md-subheader>
+			  			<md-content layout='row'>
+			  			   <span style='width:15%;margin-right:15%;'>Duration of test:</span>
+			  			      <md-input-container flex>
+						        <input type="number" ng-model="test.dur_hours" placeholder="" ng-required='true' min='0' max='23'/>Hours
+						      </md-input-container>
+						       <md-input-container flex>
+						        <input type="number" ng-model="test.dur_mins" placeholder="" ng-required='true' min='0' max='59'/>mins
+						       </md-input-container>
+			  			</md-content>
+			  			<md-content layout='row'>
+			  			   <span style='width:15%;margin-right:15%;'>Start test at:</span>
+			  			      <md-input-container flex>
+						        <input type="number" ng-model="test.start_hours" placeholder="" ng-required='true' min='0' max='23'/>Hours
+						      </md-input-container>
+						       <md-input-container flex>
+						        <input type="number" ng-model="test.start_mins" placeholder="" ng-required='true' min='0' max='59'/>mins
+						       </md-input-container>
+			  			</md-content>
+			  			
+			  			 <fieldset layout="column">
+					       <md-checkbox ng-checked="test.shuffle_quest">Shuffle Question Order
+					       </md-checkbox>
+					       <md-checkbox ng-checked="test.shuffle_choice">Shuffle choices
+					       </md-checkbox>
+					       <md-checkbox ng-checked="test.allow_pract">Allow as practise Test
+					       </md-checkbox>
+					    </fieldset>
+			     </div>
+
+			   </md-content> 
+	        </md-tab-template>
+	   	   </md-tab>
+
+	   	   <md-tab id="tab2">
+	   	   <md-tab-label><h3>Add Questions</h3></md-tab-label>
+	        <md-tab-template>
+			 <md-content ng-repeat='test in tests|filter:{name:test_name}' style='width:95%;padding:5%;'>
+	        	 <md-tabs md-selected="selectedIndex" md-border-bottom>
+				      <md-tab ng-repeat="tab in test.sections"  label="{{tab.name}}">
+				      	<md-toolbar style='background-color:white;color:black;font-size:16px; !important' >
+				      	<div style='padding:2%;' >Marking Scheme
+				      	<span style='padding-left:10%;'>Right Choice: {{tab.right_marks}}</span>
+				      	<span style='padding-left:10%;'>Wrong Choice: {{tab.wrong_marks}}</span>
+				      	<span style='padding-left:10%;'>{{tab.total_quest}} Total questions added</span>
+				      	</div>
+				      	</md-toolbar>
+				      	<md-divider></md-divider>
+				      	<div layout-margin layout='row' flex layout-align:'center center'>
+				      	<md-button style='margin:5%' flex='40' class='md-raised md-primary'>Manually add new Questions</md-button>
+				      	<md-button style='margin:5%' flex='40' class='md-raised md-primary'>Import Questions</md-button>
+				      	</div>
+				      </md-tab>
+				      </md-tabs>
+			 		
+
+			   </md-content> 
+	        </md-tab-template>
+	   	   </md-tab>
+
+	   	   <md-tab id="tab3">
+	   	   <md-tab-label><h3>Publish Test</h3></md-tab-label>
+	        <md-tab-template>
+	        </md-tab-template>
+	   	   </md-tab>
+	   	   </md-tabs>
+
+		  <md-content>
+		  </md-content>
+		  </md-content>
+
+	</md-content>
+</div>
+
+
+</div>
+</div>

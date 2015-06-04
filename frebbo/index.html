@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='main'>
+<head>
+
+  <meta charset="utf-8">
+  <title>Frebbo</title>
+  <meta name="description" content="">
+  <meta name="author" content="Naval Tharun">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href='/'>
+  <link rel="author" href="https://www.google.com/+navaltharun"/>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="views/css/login.css">
+  <link rel="icon" type="image/ico" href="images/favicon.ico">
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.css">
+    <script>document.write('<base href="' + document.location + '" />');</script>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-cookies.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.js"></script>
+ 
+<!-- file upload-->
+<script src="/ng-file-upload/dist/angular-file-upload-shim.min.js"></script> 
+<script src="/ng-file-upload/dist/angular-file-upload.min.js"></script> 
+
+<!-- smart table-->
+<script src='/Smart-Table/dist/smart-table.min.js'></script>
+
+   <!-- including the scripts -->
+   <script src="src/app.js"></script>
+   <script src="src/route.js"></script>
+   <script src="src/controller1.js"></script>
+   <script src="src/controller2.js"></script>
+   <script src="src/institute/inst_generalCtrl.js"></script>
+   <script src="src/institute/inst_batchCtrl.js"></script>
+   <script src="src/institute/inst_questionCtrl.js"></script>
+   <script src="src/institute/inst_testCtrl.js"></script>
+   <script src="src/student/stud_testCtrl.js"></script>
+   <script src="src/factories.js"></script>
+   <script src="src/directive.js"></script>
+    <!-- end -->
+
+ <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<div id='main_view' ng-view></div>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<div>
+	 <div id='header'>
+		 <div id='logo'></div>
+		 <button id='login_btn'>LOGIN</button>
+	</div>
+	<div id='title'>Create a new profitute account</div>
+
+	<div id='register_box'>
+		<form id='prof_regform' name='prof_regform' ng-submit='register()'  novalidate>
+		 	 <div class='form_title'>Email</div>
+		 		<input type='text' class='prof_input' id='prof_email' placeholder='Ex: john@example.com' tabindex="1" ng-model='vm.prof_email' required>
+			 <div class='form_title'>Professor Name</div>
+				 <input type='text' class='prof_input' id='prof_name' placeholder='' tabindex="2" ng-model='prof_name' >
+			 <div class='form_title'>Password <div class='form_title2'>Retype Password</div></div>
+				<input type='password' class='prof_input' id='prof_pwd1' placeholder='' tabindex="3" ng-model='prof_pwd1' >
+				<input type='password' class='prof_input' id='prof_pwd2' placeholder='' tabindex="4" ng-model='prof_pwd2' >
+			 <div class='form_title'>Professor ID<div class='form_title2'>Institution</div></div>
+			 	<input type='text' class='prof_input' id='prof_id' placeholder='' tabindex="5" ng-model='prof_id' >
+			 	<input type='text' class='prof_input' id='prof_inst' placeholder='' tabindex="6" ng-model='prof_inst' ><br />
+				<label id='l1' for="radio1">Male</label><input id='radio1'  type="radio" name="gender" value="male" ng-model="prof_gender">
+				<label id='l2' for="radio2">Female</label><input id='radio2' type="radio" name="gender" value="female" ng-model="prof_gender">
+			
+		    <button type='submit' id='register_prof_btn' tabindex="8" ng-disabled="userForm.$invalid" >professor</button>
+		</form>
+	</div>
+
+	
+
+
+</div> 

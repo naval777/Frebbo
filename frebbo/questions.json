@@ -1,0 +1,24 @@
+{
+"questions": [
+  {
+    "no" : "5552jjk4",
+    "quest" : "who was sexy?",
+    "opt_count" : "4",
+    "options":["elizabeth taylor","katherine hepburn","vivein leigh","ingrid bergman"],
+    "difficulty":"3",
+    "timing":"5",
+    "main_tag":"Movie",
+     "secondary_tags":["yesteryear","actress"]
+    },
+   {
+    "no" : "5552jjk4",
+    "quest" : "hgfo was sexy?",
+    "opt_count" : "4",
+    "options":["elizabeth taylor","katherine hepburn","vivein leigh","ingrid bergman"],
+    "difficulty":"3",
+    "timing":"5",
+    "main_tag":"Movie",
+     "secondary_tags":["yesteryear","actress"]
+    }
+ ]
+ }

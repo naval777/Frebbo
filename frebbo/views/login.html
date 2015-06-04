@@ -1,0 +1,49 @@
+<div>
+	<md-toolbar class="md-primary">
+
+	 <div id='header' >
+		 <div id='logo'></div>
+		 <form novalidate layout='row'>
+				<span flex='50'></span>
+
+				<md-input-container flex='20'>
+		      	<label>Email</label>
+		      	<input type='text' id='login_email' placeholder='Email' ng-model='email' >
+		   	 	</md-input-container>
+
+				<md-input-container flex='20' style='width:16%;'>
+		     	<label>Password</label>
+				<input type='text' id='login_pwd' placeholder='Password' ng-model='pwd' >
+				</md-input-container>
+
+				<md-button id='login_but' class="md-raised md-accent" layout-align='centre centre' ng-click='login()'>LOGIN</md-button>
+		 </form>
+	 </div>
+	</md-toolbar>
+
+
+	<md-content id='content_parent' layout='row' layout-align='left' flex>
+	<md-content style='overflow:hidden;'flex='60'>
+		<!-- <div id='caveman'></div>  -->
+		<div id='subtitle'>Gone are those days when quality education<br /> was provided only in classrooms</div>
+		<a href='/#/institute/profile'>Institute profile</a><br />
+		<a href='/#/institute/batch'>Institute batch</a><br />
+		<a href='/#/institute/question_bank'>Institute question</a><br />
+		<a href='/#/institute/test'>Test</a><br />
+		<a href='/#/student/take_test'>Take Test</a>
+	</md-content>
+		<div id='signup_box' flex>
+			<ul>
+				<li>Create a new account</li>
+				<li>SIGNUP</li>
+				<li><a href='/#/register/institute'>Institute</a></li>
+				<li><a href='/#/register/professor'>Professor</a></li>
+				<li>Student</li>
+			</ul>
+		</div>
+		<md-content>
+		 <md-chips ng-model="Fruit" placeholder="Enter a fruit" secondary-placeholder="+Fruit" readonly="false">
+    </md-chips>
+    </md-content>
+	</md-content>
+</div>

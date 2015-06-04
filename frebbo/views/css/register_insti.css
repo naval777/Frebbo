@@ -1,0 +1,11 @@
+
+#content_parent{
+	min-height:500px;
+	width:100vw;
+
+}
+#insti_card{
+	min-height: 400px;
+	font-size:18px !important; 
+}
+#title{font-weight:200;}

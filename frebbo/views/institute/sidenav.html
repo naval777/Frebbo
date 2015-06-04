@@ -1,0 +1,31 @@
+<style type="text/css">
+  .site-sidenav, .site-sidenav.md-locked-open-add-active, .site-sidenav.md-locked-open{
+      width:256px !important;
+      min-width: 256px;
+      max-width: 256px;
+      overflow:hidden;
+      } /* this styling is not working must find workarounds*/
+</style>
+
+<div layout='row' style="position:fixed;height:100%;" ng-controller='inst_sidenavCtrl'>
+<section  style="height:100%;" layout='row' flex>
+	<md-sidenav  class="site-sidenav md-sidenav-left md-whiteframe-z2 md-locked-open md-closed" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+	  
+	  <md-toolbar layout='row' layout-align='center center' class="md-tall md-accent">
+        <div flex='50'><img ng-src="" class="md-avatar" alt="" /></div>
+        <div flex='50' style='font-size:16px'>adfsss</div>
+      </md-toolbar>
+    
+     <md-list>
+      <md-list-item flex  layout='row' layout-align='center center' class="md-1-line" ng-repeat="item in navigation">
+		<div class="md-list-item-text">
+          <md-button style='width:280px;height:60px;font-weight:200;font-size:20px;'>{{item.title}}</md-button>
+        </div>
+        <md-divider ng-if="!$last"></md-divider>
+      </md-list-item>
+     </md-list>
+
+	</md-sidenav>
+</section> 
+ 
+</div>

@@ -1,0 +1,66 @@
+{
+"batches": [
+  {
+    "name" : "Alfreds Futterkiste",
+    "student_count" : "3",
+    "curriculum":"Physics 101",
+   "students":[
+   {"name": "nAVAL THARUn","rollnum":"12","email":"navaltharun@gmail.com","phone":"9876543210","gender":"M"},
+     {"name": "john honai","rollnum":"22","email":"honai@gmail.com","phone":"98766543210","gender":"M"},
+    {"name": "ravidran","rollnum":"562","email":"ravi@gmail.com","phone":"9876565410","gender":"M"},
+    {"name": "julie","rollnum":"112","email":"julien@gmail.com","phone":"9876543432","gender":"F"},
+       {"name": "ramachandran","rollnum":"4562","email":"ram@gmail.com","phone":"987652310","gender":"M"},
+    {"name": "katie","rollnum":"1672","email":"katn@gmail.com","phone":"987656432","gender":"F"}  
+   
+   ]
+  },
+  {
+    "name" : "Berglunds snabbköp",
+    "student_count" : "3",
+    "curriculum":"Maths X1",
+     "students":[]
+  },
+  {
+    "name" : "centro comercial Moctezuma",
+    "student_count" : "3",
+    "courses_count" : "4",
+      "students":[]
+  },
+  {
+    "name" : "Ernst Handel",
+    "student_count" : "3",
+    "courses_count" : "4",
+      "students":[]
+  },
+  {
+    "name" : "FIssA Fabrica Inter. salchichas s.A.",
+    "student_count" : "3",
+    "courses_count" : "4",
+      "students":[]
+  },
+  {
+    "name" : "Galería del gastrónomo",
+    "student_count" : "3",
+    "courses_count" : "4",
+      "students":[]
+  },
+  {
+    "name" : "Island Trading",
+    "student_count" : "3",
+    "courses_count" : "4",
+      "students":[]
+  },
+  {
+    "name" : "Königlich Essen",
+    "student_count" : "3",
+    "courses_count" : "4",
+      "students":[]
+  },
+  {
+    "name" : "Laughing Bacchus Wine cellars",
+    "student_count" : "3",
+    "courses_count" : "4",
+      "students":[]
+  }
+]
+}

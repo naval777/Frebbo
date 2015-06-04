@@ -1,0 +1,19 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td{
+margin:0;
+padding:0;
+border:0;
+max-width:100%;
+}
+body {
+  font-family: "Roboto Condensed", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; !important
+  color: #222; 
+  letter-spacing:0px;
+  } 
+
+#main_view{
+	position: absolute;
+	top:0;left:0;
+	width: 100%;
+	height: 100%;
+	float:left;
+}

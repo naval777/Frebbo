@@ -1,0 +1,69 @@
+<style type="text/css">
+  .site-sidenav, .site-sidenav.md-locked-open-add-active, .site-sidenav.md-locked-open{
+      width:256px !important;
+      min-width: 256px;
+      max-width: 256px;
+      
+      overflow:hidden;
+      }
+.dots{display:inline-block;;list-style-type:none;}
+.dot{
+    -webkit-border-radius:18px;
+    -moz-border-radius:18px;
+    border-radius:18px;
+    border:1px solid #ccc;
+    width:18px;height:18px;
+    margin-left:10px;
+    display:inline-block;
+    cursor:pointer;
+}
+.active{background-color: #00ff00;}
+.answered{background-color: #0000ff;}
+.review{background-color: #000f0f;}
+
+</style>
+<div layout='row' style="position:fixed;margin-left:auto;right:0;width:256px;height:100%;z-index:100;">
+  <md-sidenav  class="site-sidenav md-sidenav-right md-whiteframe-z2 md-locked-open md-closed" md-component-id="right" md-is-locked-open="$mdMedia('gt-md')">
+    
+    <md-toolbar layout='row' layout-align='center center' class="md-tall md-primary">
+          <md-switch ng-model="bool1"  aria-label="Switch 1">
+          {{bool1 === false?"Grid" : "List"}}
+  </md-switch>
+        <div flex='50' style='font-size:16px'></div>
+      </md-toolbar>
+     
+        <div ng-hide='bool1' class="wrapper" style='padding:5%;'>
+            <ul class="dots" ng-repeat="quest in questions">
+                <li class="dot" ng-class="{'active':isCurrentSlideIndex($index),'answered':isAnsweredIndex($index),'review':isReviewIndex($index)}"
+                      ng-click="setCurrentSlideIndex($index);">
+                    </li>
+            </ul>
+        </div>
+        <div ng-hide='!bool1' class="wrapper" style='padding:5%;'>
+            <ul  ng-repeat="quest in questions">
+                <li  ng-class="{'active':isCurrentSlideIndex($index),'answered':isAnsweredIndex($index),'review':isReviewIndex($index)}" ng-click="setCurrentSlideIndex($index);">
+                {{quest.quest}}
+                    </li>
+            </ul>
+        </div>
+        <a class="arrow_prev" href="#" ng-click="nextSlide()">Next</a>
+    <a class="arrow_next" href="#" ng-click="prevSlide()">Prev</a>
+  </md-sidenav>
+
+</div>
+
+<div layout='row' style="position:absolute;width:100%;z-index:1;">
+  <div layout-fill>
+  <md-toolbar class="md-accent"><h4 style="padding-left:10%;">Test</h4></md-toolbar>
+  
+  <md-content style='padding:10%;' >
+    <div ng-repeat='quest in questions' ng-hide="!isCurrentSlideIndex($index)">
+      {{quest.no}}<br />{{quest.quest}}<br /><div ng-repeat='opt in quest.options'>{{opt}}</div>
+<a  href='#' ng-click="markReview($index)">mark for review</a>
+<a  href='#' ng-click="saveAns($index)">Save</a>
+
+    </div>
+  </md-content>
+  </div>
+
+  </div>

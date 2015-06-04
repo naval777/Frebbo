@@ -1,0 +1,53 @@
+<div>
+	<md-toolbar class="md-primary">
+	 <div id='header'>
+		 <div id='logo'></div>
+		 <button id='login_btn'>LOGIN</button>
+	</div>
+	</md-toolbar>
+	<h1 id='title' layout='column' layout-align='center center'>Create a new institute account</h1>
+	
+	<div layout='row' >
+
+	<md-content flex><div id='caveman'></div></md-content>
+
+	<md-card id='insti_card' flex='30' layout='row' layout-align='center'>
+		<form id='inst_regform' name='prof_regform' ng-submit='register()' novalidate>
+
+			<md-input-container flex>
+     		 <label>Institute Name</label><input type='text'placeholder='' tabindex="1" ng-model='inst_name' >
+      		</md-input-container>
+      		<md-content layout='row'>
+      		<md-input-container flex>
+			 <label>Institute ID </label><input type='text'placeholder='Institute ID' tabindex="2" ng-model='inst_id' >
+			 </md-input-container>
+
+			 <md-input-container flex>
+			 <label>Institute Type </label>
+			<input type='text' placeholder='Institute Type' tabindex="3" ng-model='inst_type' >
+			</md-input-container>
+			</md-content>
+			<md-input-container flex>
+		 	 <label>Address</label><textarea md-maxlength='150' form='inst_regform' placeholder='Address' tabindex="4" columns='1' ng-model='inst_addr' >
+		 	 </textarea>
+		 	 </md-input-container>
+		 	 <md-content layout='row'>
+      		<md-input-container flex>
+			 <label>Contact Person</label><input type='text' class='inst_input' id='inst_contact_person' placeholder='Contact Person' tabindex="5" ng-model='inst_contact_person' >
+			 </md-input-container>
+			 <md-input-container flex><label>Contact</label>
+			 <input type='text' class='inst_input'  id='inst_contact' placeholder='Contact' tabindex="6" ng-model='inst_contact' ></md-input-container>
+			 </md-content>
+
+			 <md-input-container flex>
+			 <label>Institute Email</label><input type='text' class='inst_input' id='inst_email' placeholder='Ex: john@example.com' tabindex="7" ng-model='inst_email' >
+			 </md-input-container>
+		    <button id='register_btn' tabindex="8" ng-disabled="userForm.$invalid">Signup Institute</button>
+		</form>
+	</md-card>
+	</div>
+
+	
+
+
+</div> 

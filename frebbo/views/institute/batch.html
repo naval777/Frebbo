@@ -1,0 +1,128 @@
+<style type="text/css">
+	ul{list-style-type: none;
+		position:relative;
+		display:inline-block;
+		width:20vw;margin-left:10vw;
+		float:left;
+	}
+	#inpt_batchname{width:30vw;}
+	input[type='text']{width:15vw;}
+	label{font-size:17px;}	
+	.table{padding-top: 7vh; }
+	.table tr{border-bottom: 1px solid #aaa;}
+	.table th,td{padding-right:2vw;padding-top: 2vh;text-align:left;}
+	.table input{width:70%;}
+</style>
+<div layout='row' style="height:100%;width:100vw;" flex>
+<ng-include layout='row' flex style="height:100%;position:fixed;" src="'/views/institute/sidenav.html'"></ng-include>
+
+<div layout='row' style="position:absolute;padding-left:256px;width:100%;">
+	<div layout-fill>
+	<md-toolbar  layout='row' layout-align="center center"><h4 ng-click='go_back()'style="padding-left:10%;">HOME > {{tool_mesg}} </h4>
+	<md-button class='md-accent md-raised' ng-click='save_changes()' ng-hide='save_changes_hide' style="margin-right:0;margin-left:auto;color:#fff;height:70%;">SAVE CHANGES</md-button></md-toolbar>
+	
+
+	<md-content layout-margin flex>
+
+		<ul ng-repeat="batch in batches" ng-hide="batch_box" >
+		 <li >
+		 <md-card class="md-whiteframe-z1" ng-click="enter_batch(batch.name)" layout layout-align="center center">
+			<span >{{batch.name}}</span><br />
+			<span >{{batch.student_count}} Students</span>
+			</md-card>
+		 </li>
+		 </ul>
+		 <ul ng-hide="batch_box" >
+		 <li>
+		 <md-card class="md-whiteframe-z1" ng-click="create_batch($event)" layout layout-align="center center">
+			<span ></span><br />
+			<span >Create a new batch and add students</span>
+			</md-card>
+		 </li>
+		</ul>
+		
+		<md-content ng-hide="!batch_box" layout='column' flex layout-align="center center">
+		<md-content>
+			<md-input-container layout='row' flex>
+			 <label>Batch name</label>
+			 <input id='inpt_batchname' type="text" ng-model="batch_name" disabled/>
+			</md-input-container>
+
+		<!-- 	<md-autocomplete md-selected-item="course_selectItem" md-search-text="course_searchText" md-items="item in getMatches(course_searchText)" md-item-text="item.auto_course" placeholder="Search...">
+			    <span md-highlight-text="course_searchText">{{item.auto_course}}</span>
+			</md-autocomplete>
+ -->
+			
+			<md-content ng-repeat='batch in batches|filter:{name:batch_name}'>
+			<label>Curriculum</label>
+   			 <md-select placeholder="{{batch.curriculum}}" ng-model="batch_curric">
+			  <md-option ng-value='curric.name' ng-repeat="curric in curriculum" >{{curric.name}}</md-option>
+			  </md-select>
+			  </md-content>
+
+   			</md-content>
+   			 <md-divider></md-divider>
+
+
+   		  <md-content ng-repeat="batch in batches|filter:{name:batch_name}" >
+   			<table st-table="batch.students" class="table">
+				<thead>
+					<tr>
+					<th>
+				<input st-search placeholder='Search Student' class="input-sm form-control" type="search"/>
+					</th>
+					<th><md-button class="md-raised md-accent but" ng-click="add()">+Add Student</md-button></th>
+					<th> <md-button  class="md-raised md-accent but2" type="file" ng-file-select="selectFile($files)" ng-multiple="true" ng-accept="'*.pdf'">Upload in Bulk</md-button></th>
+					<th><md-button class="md-raised md-accent but" ng-click="delete_stud()">Delete</md-button></th>
+				</tr>
+				<tr>
+					<th st-sort="name">Student name</th>
+					<th st-sort="rollnum">Roll Number</th>
+					<th st-sort="email">Email ID</th>
+					<th st-sort="phone">Phone number</th>
+					<th st-sort="gender">Gender</th>
+				</tr>
+				</thead>
+				<tbody>
+				
+				<tr ng-hide="add_singleStudent">
+				<form name="myForm">
+					 <td><md-input-container flex><input type="text" ng-model="stud_name"  ng-required='true'/></md-input-container></td>
+					 <td><md-input-container flex><input type="text" ng-model="stud_roll"  ng-required='true'/></md-input-container></td>
+					 <td><md-input-container flex><input type="text" ng-model="stud_email"/></md-input-container></td>
+					 <td><md-input-container flex><input type="text" ng-model="stud_phone" /></md-input-container></td>
+					 <td><md-input-container flex><input type="text" ng-model="stud_gender"/></md-input-container>
+					 </td>
+					 <td><md-button class='md-accent md-raised'  ng-click='newStudent()'>save</md-button>
+					</td>
+					 </form>
+			    </tr>
+			  <tr ng-hide="edit_singleStudent" ng-repeat="row in batch.students|filter:{name:row_name}">
+					 <td><md-input-container flex><input type="text" ng-model="row.name" ng-required='true'/></md-input-container></td>
+					 <td><md-input-container flex><input type="text" ng-model="row.rollnum"  disabled /></md-input-container></td>
+					 <td><md-input-container flex><input type="text" ng-model="row.email"/></md-input-container></td>
+					 <td><md-input-container flex><input type="text" ng-model="row.phone" /></md-input-container></td>
+					 <td><md-input-container flex><input type="text" ng-model="row.gender"/></md-input-container>
+					 </td>
+					 <td><md-button class='md-accent md-raised'  ng-click='editStudent(row)'>Done</md-button>
+					</td>
+			    </tr>
+				<tr ng-repeat="row in batch.students">
+				<td><md-checkbox ng-click="chck_toggle(row, selected)" ng-model="row.selected">{{row.name | uppercase}}</md-checkbox></td>
+					<td>{{row.rollnum}}</td>
+					<td><a ng-href="mailto:{{row.email}}" target='_blank'>{{row.email}}</a></td>
+					<td>{{row.phone}}</td>
+					<td>{{row.gender}}</td>
+					<td> <md-button class='md-accent md-raised' ng-click='edit(row)'>edit</md-button></td> 
+				</tr>
+				</tbody>
+		</table>
+		</md-content>
+
+	</md-content>
+	</md-content>
+</div>
+
+
+</div>
+</div>

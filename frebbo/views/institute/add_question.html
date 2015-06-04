@@ -1,0 +1,60 @@
+ <h3 class="md-accent">Add Questions</h3>
+    <div layout='row' flex>
+ 
+          <md-input-container flex>
+            <label>Questions</label>
+              <textarea ng-model="add_quest" columns="1" md-maxlength="150"></textarea>
+            </md-input-container>
+           <div layout='column' flex>
+            <md-input-container flex>
+            <label>Correct Option</label><input type="text" ng-model="add_opt[0]"  ng-required='true'/>
+            </md-input-container>
+             <md-input-container flex>
+            <label>Option 2</label><input type="text" ng-model="add_opt[1]"  ng-required='true'/>
+            </md-input-container>
+             <md-input-container flex>
+            <label>Option 3</label><input type="text" ng-model="add_opt[2]"  ng-required='true'/>
+            </md-input-container>
+             <md-input-container flex>
+            <label>Option 4</label><input type="text" ng-model="add_opt[3]"  ng-required='true'/>
+            </md-input-container>
+          </div>
+          <div layout='column' flex>
+              <md-input-container flex>
+            <label>Difficulty:</label><input type="text" ng-model="add_diff"  ng-required='true'/>
+            </md-input-container>
+            <md-input-container flex>
+            <label>Timing:</label><input type="text" ng-model="add_timing"  ng-required='true'/></md-input-container>
+            </md-input-container flex>
+            <md-input-container flex>
+            <label>Main Tag:</label><input type="text" ng-model="add_maintag"  ng-required='true'/>
+            </md-input-container>
+            <md-input-container flex>
+            <label>Secondary Tags:</label><input type="text" ng-model="add_sectag"  ng-required='true'/>
+            </md-input-container>
+            <md-button class='md-accent md-raised' ng-click='addDraftQuest()' style='margin-left:100px;width:200px;'>Next</md-button>
+         </div>
+      
+    </div>
+    <div  style="width:100%;">
+    <table>
+        <thead>
+          <tr>
+            <th>Question</th>
+            <th>Options</th>
+            <th>Correct option</th>
+            <th>Other details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="row in draft_quest">
+              <td><md-checkbox ng-model="row.selected">{{row.quest}}</md-checkbox></td>
+                <td><p ng-repeat='opt in row.options'>{{opt}}</p></td>
+                <td>{{row.options[0]}}</td>
+                <td>Difficulty: {{row.difficulty}}<br />Timing: {{row.timing}}mins<br />Main Tag: {{row.main_tag}}</td>
+
+          </tr>
+        </tbody>
+        </table>
+        </div>
+        <div><md-button class='md-accent md-raised' ng-click='addQuestion()'>Submit All</md-button></div>

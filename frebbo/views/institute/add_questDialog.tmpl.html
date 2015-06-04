@@ -1,0 +1,35 @@
+
+<md-dialog aria-label="Mango (Fruit)">
+  <form>
+  <md-dialog-content  class="sticky-container">
+    <md-subheader class="md-sticky-no-effect">Add Questions</md-subheader>
+    <div layout='row' flex>
+          <md-input-container>
+            <label>Questions</label>
+              <textarea ng-model="add_quest" columns="1" md-maxlength="150"></textarea>
+            </md-input-container>
+            <p ng-repeat='opt in row.options'>{{opt}}</p>
+            <md-input-container flex><input type="text" ng-model="add_correct"  ng-required='true'/></md-input-container>
+            <md-input-container flex>
+            <div layout='column' flex>
+          <label>Difficulty:</label><input type="text" ng-model="add_diff"  ng-required='true'/>
+          </md-input-container>
+          <md-input-container flex>
+          <label>Timing:</label><input type="text" ng-model="add_timing"  ng-required='true'/></md-input-container>
+          </md-input-container flex>
+          <md-input-container flex>
+          <label>Main Tag:</label><input type="text" ng-model="add_maintag"  ng-required='true'/>
+          </md-input-container>
+          </div>
+    </div>
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <md-button ng-click="answer('not useful')" class="md-primary">
+     Save
+    </md-button>
+    <md-button ng-click="answer('useful')" class="md-primary">
+      Discard
+    </md-button>
+  </div>
+  </form>
+</md-dialog>

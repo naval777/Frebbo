@@ -1,0 +1,47 @@
+{
+"curriculum": [
+  {
+    "name" : "Physic 101",
+    "chapters_count" : "3",
+    "tags_count" : "60",
+    "courses":[
+    {"name":"killer",
+    "questions":["4322","2234432","324234"],
+
+    "chapters":[{"name":"Math","tags":[{"name":"123"},{"name":"563"},{"name":"983"}]},
+    {"name":"Physics","tags":[{"name":"rew"},{"name":"rtr"},{"name":"fdsg"}]},
+    {"name":"chem","tags":[{"name":"sdf"},{"name":"fvdx"},{"name":"rws"}]}    
+    ]
+    },
+     {"name":"poter"},
+      {"name":"assassin"},
+       {"name":"murder"},
+        {"name":"prison"}
+    ]
+  },
+{
+    "name" : "chem 101",
+    "chapters_count" : "3",
+    "tags_count" : "60",
+    "courses":[
+    {"name":"killer"},
+     {"name":"poter"},
+      {"name":"assassin"},
+       {"name":"murder"},
+        {"name":"prison"}
+    ]
+  },
+  {
+    "name" : "Movie 101",
+    "chapters_count" : "3",
+    "tags_count" : "60",
+    "courses":[
+    {"name":"killer"},
+     {"name":"poter"},
+      {"name":"assassin"},
+       {"name":"murder"},
+        {"name":"prison"}
+    ]
+  }
+ ]
+ }
